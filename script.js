@@ -44,5 +44,3 @@ forward.addEventListener("click", () => {
     }
   }
 });
-
-sel
