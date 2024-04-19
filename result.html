@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App - Result</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="move">
+        <i title="Go back" id="back" class="bx bxs-left-arrow-circle"></i>
+        <i></i>
+      </div>
+      <img id="certificate" src="Images/bg.png" width="280px" />
+      <div class="result">
+        <h1 id="mark">Kuntal Kargupta</h1>
+        <section>
+          <h1>CERTIFICATE</h1>
+          <h4>OF PARTICIPATION</h4>
+        </section>
+        <h4>PROUDLY PRESENTED TO</h4>
+        <h2 id="userName"></h2>
+        <p>Your Score(Level - <span id="userLvl">Hard</span>)</p>
+        <p id="score"><span>0 </span>/ 10</p>
+        <div class="date">
+          <p>
+            <span id="Date"></span>
+            <span id="Month"></span>,
+            <span id="Year"></span>
+          </p>
+          <p id="date">Date</p>
+        </div>
+      </div>
+      <button id="btn">Back to Home</button>
+      <p id="credit">made by KUNTAL ❤️</p>
+    </div>
+    <script src="result.js"></script>
+  </body>
+</html>
