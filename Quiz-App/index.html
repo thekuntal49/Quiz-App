@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="move">
+        <i></i>
+        <i
+          title="Go forward"
+          id="forward"
+          class="bx bxs-right-arrow-circle"
+        ></i>
+      </div>
+      <h1 id="title">Quiz <span>Khelo</span></h1>
+      <div class="name">
+        <label for="username">Enter your name</label>
+        <input
+          onfocus="this.value=''"
+          autofocus
+          type="text"
+          title="Please enter your name"
+          placeholder="type here..."
+          title="please enter your name"
+          name="username"
+          id="username"
+        />
+      </div>
+      <div class="avatar">
+        <label>Choose your avatar</label>
+        <div class="img-list">
+          <img title="avatar1" class="img img1" src="Images/avatar1.avif" />
+          <img title="avatar2" class="img img2" src="Images/avatar2.jpg" />
+          <img title="avatar3" class="img img3" src="Images/avatar3.jpg" />
+        </div>
+      </div>
+      <button title="tap to start" id="btn">Start Quiz</button>
+      <p id="credit">made by KUNTAL ❤️</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
