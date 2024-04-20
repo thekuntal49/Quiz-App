@@ -408,7 +408,7 @@ if (localStorage.userDifficulty === "hard") {
 
       ele.addEventListener("click", () => {
         if (!answeredCorrectly) {
-          if (ele.innerText === hardQues[index].answer) {
+          if (ele.innerText === easyQues[index].answer) {
             score++;
             localStorage.setItem("score", score);
             ele.style.backgroundColor = "greenyellow";
