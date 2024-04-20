@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   color: white;
   gap: 40px;
-   -webkit-user-select: none;
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -220,7 +220,7 @@ body {
   align-items: center;
   border: none;
   margin: 15px;
-  font-size: 10.5px;
+  font-size: 14px;
   border-radius: 6px;
   background-color: white;
   color: rgb(66, 64, 64);
@@ -355,4 +355,12 @@ body {
 
 .opt.hover-effect:hover {
   background-color: greenyellow;
+}
+
+#quizForm {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
 }
