@@ -352,3 +352,11 @@ body {
   color: gold;
   transition: all 0.1s linear;
 }
+
+.opt.clicked {
+  transform: none !important;
+}
+
+.opt.hover-effect:hover {
+  background-color: greenyellow;
+}
