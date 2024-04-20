@@ -19,6 +19,10 @@ body {
   flex-direction: column;
   color: white;
   gap: 40px;
+   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .container {
