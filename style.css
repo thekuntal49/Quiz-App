@@ -228,10 +228,6 @@ body {
   transition: all 0.2s;
 }
 
-.opt:hover {
-  background-color: greenyellow;
-}
-
 .opt:active {
   transform: scale(0.9);
 }
