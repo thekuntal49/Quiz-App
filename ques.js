@@ -1,242 +1,204 @@
-const hardQues = [
+const easyQues = [
   {
-    question: "What does 'NaN' stand for in JavaScript?",
-    options: ["Not a Number", "Newly assigned Number", "Negative Numeric"],
-    answer: "Not a Number",
+    question: "const result = (1 && 2) || (0 && 3);",
+    options: ["1", "2", "3", "0"],
+    answer: "2",
   },
   {
-    question: "Which of the following statements about closures is true?",
+    question:
+      "const array = [5, 1, 3, 4, 2];\nconst result = array.sort((a, b) => b - a);",
     options: [
-      "They can only be created using anonymous functions.",
-      "They can access variables from their containing function even after the function has finished executing.",
-      "They can only be created inside classes.",
+      "[5, 4, 3, 2, 1]",
+      "[1, 2, 3, 4, 5]",
+      "[5, 1, 3, 4, 2]",
+      "[5, 4, 2, 3, 1]",
     ],
-    answer:
-      "They can access variables from their containing function even after the function has finished executing.",
+    answer: "[5, 4, 3, 2, 1]",
+  },
+  {
+    question: "const result = typeof Object;",
+    options: ["'object'", "'function'", "'null'", "'undefined'"],
+    answer: "'function'",
   },
   {
     question:
-      "What will be the output of the following code?\nconsole.log(0.1 + 0.2 === 0.3);",
-    options: ["true", "false"],
-    answer: "false",
+      "let result = 2009;\ntry {\n  result = 262 / 0;\n} catch (e) {\n  result = 0 / 262;}",
+    options: ["Infinity", "262", "0", "NaN"],
+    answer: "Infinity",
   },
   {
-    question: "What does the 'use strict' mode in JavaScript do?",
+    question: "const result = true > false;",
+    options: ["true", "false", "NaN", "Error"],
+    answer: "true",
+  },
+  {
+    question: "const result = Number.isInteger(95.0);",
+    options: ["true", "false", "NaN", "Error"],
+    answer: "true",
+  },
+  {
+    question:
+      "const array = [1, 2, 3, 4, 5];\nconst result = array.splice(1, 2, 3);",
     options: [
-      "Enforces stricter parsing and error handling in your code.",
-      "Enables all features of the latest JavaScript version.",
-      "Allows you to use undeclared variables without an error.",
+      "[1, 2, 3, 4, 5]",
+      "[1, 3, 4, 5]",
+      "[1, 2, 3]",
+      "[1, 3, 2, 4, 5]",
     ],
-    answer: "Enforces stricter parsing and error handling in your code.",
+    answer: "[1, 2, 3]",
+  },
+  {
+    question: "const { name } = {\n  name: 'Brendan'\n};\nconst result = name;",
+    options: ["'Brendan'", "'name'", "'undefined'", "'null'"],
+    answer: "'Brendan'",
   },
   {
     question:
-      "What is the result of the following code?\nconsole.log(+'10' + +'5');",
-    options: ["105", "15", "20"],
-    answer: "15",
-  },
-  {
-    question: "Which of the following is not a valid JavaScript variable name?",
-    options: ["myVar", "3var", "_var", "var"],
-    answer: "3var",
+      "for(var items=[95,262,2015,2009],\nnoop=(v)=>v,\ni=0;i<items.length;i++)\nnoop(items[i]);\nconst result=i;",
+    options: ["0", "3", "4", "undefined"],
+    answer: "4",
   },
   {
     question:
-      "What does the following code snippet do?\nconst x = 5;\nconst y = x++ + ++x;",
+      "const str = 'JavaScript is not Java';\nconst result = str.replace('Java', 'ECMA');",
     options: [
-      "Assigns the value 10 to y",
-      "Assigns the value 12 to y",
-      "Results in a syntax error",
+      "'JavaScript is not ECMA'",
+      "'ECMAScript is not Java'",
+      "'JavaScript is not Java'",
+      "'ECMAScript is not ECMA'",
     ],
-    answer: "Assigns the value 12 to y",
-  },
-  {
-    question:
-      "What is the result of the following code?\nconsole.log(typeof NaN);",
-    options: ["number", "NaN", "undefined"],
-    answer: "number",
-  },
-  {
-    question:
-      "What is the output of the following code?\nconsole.log(2 + '2');",
-    options: ["22", "4", "TypeError"],
-    answer: "22",
-  },
-  {
-    question:
-      "What will be the result of the following code?\nconst x = {};\nconsole.log(x.toString());",
-    options: ["[object Object]", "{}", "TypeError"],
-    answer: "[object Object]",
+    answer: "'JavaScript is not ECMA'",
   },
 ];
 
 const mediumQues = [
   {
-    question: "What does the 'typeof' operator return for an array?",
-    options: ["'object'", "'array'", "'string'", "'number'"],
-    answer: "'object'",
+    question:
+      "const map = v => v * v;\nconst array = Array.from([1, 2, 3], map);\nconst result = array.join('');",
+    options: ["'149'", "'123'", "'149162'", "'112233'"],
+    answer: "'149162'",
   },
   {
-    question: "What is the result of the expression: '5' + 3?",
-    options: ["'53'", "'8'", "'5+3'", "'Error'"],
-    answer: "'53'",
+    question: "const array = [1, 2, 3];\nconst result = 3 in array;",
+    options: ["true", "false", "undefined", "Error"],
+    answer: "false",
   },
   {
     question:
-      "Which method is used to add new elements to the end of an array?",
-    options: ["'push'", "'pop'", "'shift'", "'unshift'"],
-    answer: "'push'",
+      "const func = function (x, y = 4) {\n  return x + y;\n}\nconst result = func(2);",
+    options: ["2", "4", "6", "8"],
+    answer: "6",
   },
   {
-    question: "How do you check if a variable is undefined?",
-    options: [
-      "'typeof variable === 'undefined''",
-      "'variable === undefined'",
-      "'variable == null'",
-      "All of the above",
-    ],
-    answer: "All of the above",
+    question: "let name = 1;\n({ name } = { name: 3 });\nconst result = name;",
+    options: ["1", "3", "undefined", "'name'"],
+    answer: "3",
   },
   {
-    question: "What is the purpose of the 'splice' method in JavaScript?",
-    options: [
-      "To add or remove elements from an array",
-      "To concatenate two arrays",
-      "To reverse the elements of an array",
-      "To sort the elements of an array",
-    ],
-    answer: "To add or remove elements from an array",
+    question:
+      "const array = [1, 2, 3];\nlet result = 1;\nfor (const value of array) {\n  result *= value;\n}",
+    options: ["6", "5", "0", "1"],
+    answer: "6",
   },
   {
-    question: "Which statement correctly declares a function?",
-    options: [
-      "'function myFunction() {}'",
-      "'myFunction = function() {}'",
-      "'var myFunction = {}'",
-      "'var myFunction() = {}'",
-    ],
-    answer: "'function myFunction() {}'",
+    question: "const result = Number('') + 1;",
+    options: ["1", "0", "'1'", "'01'"],
+    answer: "1",
   },
   {
-    question: "What is the result of the following code?\nBoolean('false')",
-    options: ["'true'", "'false'", "'Error'", "'undefined'"],
-    answer: "'true'",
+    question:
+      "const func = new Function('a', 'b', 'return a + b');\nconst result = func(1, 2);",
+    options: ["'12'", "'3'", "'Error'", "'NaN'"],
+    answer: "'3'",
   },
   {
-    question: "How do you add a comment in JavaScript?",
-    options: [
-      "'// This is a comment'",
-      "'/* This is a comment */'",
-      "'<!-- This is a comment -->'",
-      "'// This is a comment */'",
-    ],
-    answer: "'// This is a comment'",
+    question: "const f=(o)=>{o=null;};const o={name:'Brendan'};f(o);o.name;",
+    options: ["'Brendan'", "'null'", "'undefined'", "'Error'"],
+    answer: "'Brendan'",
   },
   {
-    question: "Which method is used to remove the last element from an array?",
-    options: ["'pop'", "'push'", "'shift'", "'unshift'"],
-    answer: "'pop'",
+    question:
+      "const firstArray = [1, 2, 3];\nconst secondArray = [1, 2, 3];\nconst result = firstArray == secondArray;",
+    options: ["true", "false", "undefined", "Error"],
+    answer: "false",
   },
   {
-    question: "What does the 'map' method do in JavaScript?",
-    options: [
-      "Creates a new array with the results of calling a function for every element in the array",
-      "Filters elements in an array based on a condition",
-      "Reduces the array to a single value",
-      "Sorts the elements of the array",
-    ],
-    answer:
-      "Creates a new array with the results of calling a function for every element in the array",
+    question:
+      "const array = [1, 3, 5, 3, 10];\nconst result = array.lastIndexOf(3);",
+    options: ["1", "3", "4", "-1"],
+    answer: "3",
   },
 ];
 
-// Displaying the questions
-
-const easyQues = [
+const hardQues = [
   {
-    question: "What is the correct way to include JavaScript in an HTML file?",
+    question: "var value = 2009;\ndelete value;\nconst result = value;",
+    options: ["2009", "undefined", "Error", "null"],
+    answer: "2009",
+  },
+  {
+    question: "const result = null && undefined;",
+    options: ["null", "undefined", "true", "false"],
+    answer: "null",
+  },
+  {
+    question: "for (const i = 0; i < 5; i++) { const result = i; }",
     options: [
-      "<script src='script.js'></script>",
-      "<javascript src='script.js'></javascript>",
-      "<script href='script.js'></script>",
-      "<link rel='script' href='script.js'>",
+      "This code will throw an error",
+      "This code will run without errors",
+      "This code will not execute",
+      "This code will result in an infinite loop",
     ],
-    answer: "<script src='script.js'></script>",
+    answer: "This code will throw an error",
   },
   {
-    question: "Which keyword is used to declare a variable in JavaScript?",
-    options: ["variable", "var", "v", "let"],
-    answer: "var",
-  },
-  {
-    question: "What does the '=== operator do in JavaScript?",
+    question:
+      "const array = [1, 2, 3];\nconst result = array.concat([4], [5]);",
     options: [
-      "Checks if two values are equal in value and type",
-      "Checks if two values are equal in value but not in type",
-      "Assigns a value to a variable",
-      "Checks if two values are equal in type but not in value",
+      "[1, 2, 3, 4, 5]",
+      "[1, 2, 3, [4, 5]]",
+      "[1, 2, 3, 4], [5]",
+      "[1, 2, 3, 4, [5]]",
     ],
-    answer: "Checks if two values are equal in value and type",
+    answer: "[1, 2, 3, 4, 5]",
   },
   {
-    question: "How do you write 'Hello, World!' in an alert box?",
+    question:
+      "const func = function fName() {\n  return 2009;\n};\nconst result = typeof fName;",
+    options: ["'function'", "'number'", "'undefined'", "'null'"],
+    answer: "'function'",
+  },
+  {
+    question: "const x = ?; const result = x !== x;",
+    options: ["undefined", "null", "NaN", "0"],
+    answer: "NaN",
+  },
+  {
+    question:
+      "const array = [1, 2, 3];\nconst map = (v, i) => v * i;\nconst result = array.map(map);",
+    options: ["'[1, 2, 3]'", "'[0, 2, 6]'", "'[0, 2, 6]'", "'Error'"],
+    answer: "'[0, 2, 6]'",
+  },
+  {
+    question: "const array = new Array(10); const result = array[0];",
+    options: ["undefined", "null", "0", "TypeError"],
+    answer: "undefined",
+  },
+  {
+    question: 'const result = "ECMAScript".slice(1, -1);',
+    options: ["'ECMA'", "'CMAScrip'", "'CMAScript'", "'ECMAScrip'"],
+    answer: "'CMAScrip'",
+  },
+  {
+    question:
+      "const array = [1, 2, 3];\nconst result = array.concat([4], [5]);",
     options: [
-      "alertBox('Hello, World!');",
-      "msg('Hello, World!');",
-      "alert('Hello, World!');",
-      "msgBox('Hello, World!');",
+      "'[1, 2, 3, 4, 5]'",
+      "'[1, 2, 3, [4, 5]]'",
+      "'[1, 2, 3, 4], [5]'",
+      "'[1, 2, 3, 4, [5]]'",
     ],
-    answer: "alert('Hello, World!');",
-  },
-  {
-    question: "Which function is used to print something in the console?",
-    options: ["console.log()", "print()", "log()", "console()"],
-    answer: "console.log()",
-  },
-  {
-    question: "How do you create a function in JavaScript?",
-    options: [
-      "function:myFunction()",
-      "function = myFunction()",
-      "function myFunction()",
-      "myFunction():function",
-    ],
-    answer: "function myFunction()",
-  },
-  {
-    question: "How do you call a function named 'myFunction'?",
-    options: [
-      "call myFunction()",
-      "myFunction()",
-      "call function myFunction()",
-      "function myFunction()",
-    ],
-    answer: "myFunction()",
-  },
-  {
-    question: "How do you comment out a single line of code in JavaScript?",
-    options: [
-      "//This is a comment",
-      "/*This is a comment*/",
-      "'This is a comment",
-      "#This is a comment",
-    ],
-    answer: "//This is a comment",
-  },
-  {
-    question: "How do you create a for loop in JavaScript?",
-    options: [
-      "for (i <= 5; i++)",
-      "for (i = 0; i <= 5; i++)",
-      "for (i = 0; i <= 5)",
-      "loop (i = 0; i <= 5)",
-    ],
-    answer: "for (i = 0; i <= 5; i++)",
-  },
-  {
-    question: "Which event occurs when the user clicks on an HTML element?",
-    options: ["onmouseclick", "onclick", "onchange", "onmouseover"],
-    answer: "onclick",
+    answer: "'[1, 2, 3, 4, 5]'",
   },
 ];
 
@@ -282,7 +244,6 @@ if (localStorage.userDifficulty === "hard") {
           }
 
           answeredCorrectly = true;
-          // Disable all options
           opt.forEach((optElement) => {
             optElement.removeEventListener("click", () => {});
             optElement.style.cursor = "no-drop";
@@ -424,6 +385,7 @@ if (localStorage.userDifficulty === "hard") {
           }
 
           answeredCorrectly = true;
+          // Disable all options
           opt.forEach((optElement) => {
             optElement.removeEventListener("click", () => {});
             optElement.style.cursor = "no-drop";
