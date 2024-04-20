@@ -357,10 +357,3 @@ body {
   background-color: greenyellow;
 }
 
-#quizForm {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  justify-content: center;
-  align-items: center;
-}
