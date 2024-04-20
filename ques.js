@@ -2,63 +2,73 @@ const hardQues = [
   {
     question: "What does 'NaN' stand for in JavaScript?",
     options: ["Not a Number", "Newly assigned Number", "Negative Numeric"],
-    answer: "Not a Number"
+    answer: "Not a Number",
   },
   {
     question: "Which of the following statements about closures is true?",
     options: [
       "They can only be created using anonymous functions.",
       "They can access variables from their containing function even after the function has finished executing.",
-      "They can only be created inside classes."
+      "They can only be created inside classes.",
     ],
-    answer: "They can access variables from their containing function even after the function has finished executing."
+    answer:
+      "They can access variables from their containing function even after the function has finished executing.",
   },
   {
-    question: "What will be the output of the following code?\nconsole.log(0.1 + 0.2 === 0.3);",
+    question:
+      "What will be the output of the following code?\nconsole.log(0.1 + 0.2 === 0.3);",
     options: ["true", "false"],
-    answer: "false"
+    answer: "false",
   },
   {
     question: "What does the 'use strict' mode in JavaScript do?",
     options: [
       "Enforces stricter parsing and error handling in your code.",
       "Enables all features of the latest JavaScript version.",
-      "Allows you to use undeclared variables without an error."
+      "Allows you to use undeclared variables without an error.",
     ],
-    answer: "Enforces stricter parsing and error handling in your code."
+    answer: "Enforces stricter parsing and error handling in your code.",
   },
   {
-    question: "What is the result of the following code?\nconsole.log(+'10' + +'5');",
+    question:
+      "What is the result of the following code?\nconsole.log(+'10' + +'5');",
     options: ["105", "15", "20"],
-    answer: "15"
+    answer: "15",
   },
   {
     question: "Which of the following is not a valid JavaScript variable name?",
     options: ["myVar", "3var", "_var", "var"],
-    answer: "3var"
+    answer: "3var",
   },
   {
-    question: "What does the following code snippet do?\nconst x = 5;\nconst y = x++ + ++x;",
-    options: ["Assigns the value 10 to y", "Assigns the value 12 to y", "Results in a syntax error"],
-    answer: "Assigns the value 12 to y"
+    question:
+      "What does the following code snippet do?\nconst x = 5;\nconst y = x++ + ++x;",
+    options: [
+      "Assigns the value 10 to y",
+      "Assigns the value 12 to y",
+      "Results in a syntax error",
+    ],
+    answer: "Assigns the value 12 to y",
   },
   {
-    question: "What is the result of the following code?\nconsole.log(typeof NaN);",
+    question:
+      "What is the result of the following code?\nconsole.log(typeof NaN);",
     options: ["number", "NaN", "undefined"],
-    answer: "number"
+    answer: "number",
   },
   {
-    question: "What is the output of the following code?\nconsole.log(2 + '2');",
+    question:
+      "What is the output of the following code?\nconsole.log(2 + '2');",
     options: ["22", "4", "TypeError"],
-    answer: "22"
+    answer: "22",
   },
   {
-    question: "What will be the result of the following code?\nconst x = {};\nconsole.log(x.toString());",
+    question:
+      "What will be the result of the following code?\nconst x = {};\nconsole.log(x.toString());",
     options: ["[object Object]", "{}", "TypeError"],
-    answer: "[object Object]"
-  }
+    answer: "[object Object]",
+  },
 ];
-
 
 const mediumQues = [
   {
@@ -234,6 +244,8 @@ const ques = document.querySelector("#ques");
 const opt = document.querySelectorAll(".opt");
 const curr = document.querySelector("#curr");
 const audio = new Audio("Audio/click.mp3");
+const audioRight = new Audio("Audio/right.mp3");
+const audioWrong = new Audio("Audio/wrong.mp3");
 localStorage.getItem("score");
 let score = 0;
 let selectedOption = null;
@@ -249,18 +261,37 @@ if (localStorage.userDifficulty === "hard") {
 
     opt.forEach((ele, i) => {
       ele.innerText = hardQues[index].options[i];
+      ele.style.backgroundColor = "";
+      ele.style.cursor = "pointer";
 
       ele.addEventListener("click", () => {
-        if (!answeredCorrectly && ele.innerText === hardQues[index].answer) {
-          score++;
-          localStorage.setItem("score", score);
-          console.log(localStorage.score);
+        if (!answeredCorrectly) {
+          if (ele.innerText === hardQues[index].answer) {
+            score++;
+            localStorage.setItem("score", score);
+            ele.style.backgroundColor = "greenyellow";
+            new Audio("Audio/right.mp3").play();
+          } else {
+            ele.style.backgroundColor = "red";
+            opt.forEach((optElement) => {
+              if (optElement.innerText === hardQues[index].answer) {
+                optElement.style.backgroundColor = "greenyellow";
+                new Audio("Audio/wrong.mp3").play();
+              }
+            });
+          }
 
-          answeredCorrectly = true; //
+          answeredCorrectly = true;
+          // Disable all options
+          opt.forEach((optElement) => {
+            optElement.removeEventListener("click", () => {});
+            optElement.style.cursor = "no-drop";
+            optElement.classList.add("clicked");
+            optElement.classList.remove("hover-effect");
+          });
         }
-
-        audio.play();
       });
+      ele.classList.add("hover-effect");
     });
   }
 
@@ -271,6 +302,13 @@ if (localStorage.userDifficulty === "hard") {
     selectedOption = null;
     currentQuestionIndex++;
     curr.innerText = currentQuestionIndex + 1;
+
+    // Reset all options
+    opt.forEach((ele) => {
+      ele.style.backgroundColor = "";
+      ele.style.pointerEvents = "auto";
+    });
+
     if (currentQuestionIndex == 9) {
       btn.innerText = "Submit";
       btn.style.backgroundColor = "greenyellow";
@@ -291,19 +329,40 @@ if (localStorage.userDifficulty === "hard") {
   function displayQuestion(index) {
     ques.innerText = mediumQues[index].question;
     let answeredCorrectly = false;
+
     opt.forEach((ele, i) => {
       ele.innerText = mediumQues[index].options[i];
+      ele.style.backgroundColor = "";
+      ele.style.cursor = "pointer";
+
       ele.addEventListener("click", () => {
-        if (!answeredCorrectly && ele.innerText === mediumQues[index].answer) {
-          score++;
-          localStorage.setItem("score", score);
-          console.log(localStorage.score);
+        if (!answeredCorrectly) {
+          if (ele.innerText === mediumQues[index].answer) {
+            score++;
+            localStorage.setItem("score", score);
+            ele.style.backgroundColor = "greenyellow";
+            new Audio("Audio/right.mp3").play();
+          } else {
+            ele.style.backgroundColor = "red";
+            opt.forEach((optElement) => {
+              if (optElement.innerText === mediumQues[index].answer) {
+                optElement.style.backgroundColor = "greenyellow";
+                new Audio("Audio/wrong.mp3").play();
+              }
+            });
+          }
 
-          answeredCorrectly = true; //
+          answeredCorrectly = true;
+          // Disable all options
+          opt.forEach((optElement) => {
+            optElement.removeEventListener("click", () => {});
+            optElement.style.cursor = "no-drop";
+            optElement.classList.add("clicked");
+            optElement.classList.remove("hover-effect");
+          });
         }
-
-        audio.play();
       });
+      ele.classList.add("hover-effect");
     });
   }
 
@@ -311,8 +370,16 @@ if (localStorage.userDifficulty === "hard") {
 
   const btn = document.querySelector("#btn");
   btn.addEventListener("click", () => {
+    selectedOption = null;
     currentQuestionIndex++;
     curr.innerText = currentQuestionIndex + 1;
+
+    // Reset all options
+    opt.forEach((ele) => {
+      ele.style.backgroundColor = "";
+      ele.style.pointerEvents = "auto";
+    });
+
     if (currentQuestionIndex == 9) {
       btn.innerText = "Submit";
       btn.style.backgroundColor = "greenyellow";
@@ -336,16 +403,36 @@ if (localStorage.userDifficulty === "hard") {
 
     opt.forEach((ele, i) => {
       ele.innerText = easyQues[index].options[i];
-      ele.addEventListener("click", () => {
-        if (!answeredCorrectly && ele.innerText === easyQues[index].answer) {
-          score++;
-          localStorage.setItem("score", score);
-          console.log(localStorage.score);
+      ele.style.backgroundColor = "";
+      ele.style.cursor = "pointer";
 
-          answeredCorrectly = true; //
+      ele.addEventListener("click", () => {
+        if (!answeredCorrectly) {
+          if (ele.innerText === hardQues[index].answer) {
+            score++;
+            localStorage.setItem("score", score);
+            ele.style.backgroundColor = "greenyellow";
+            new Audio("Audio/right.mp3").play();
+          } else {
+            ele.style.backgroundColor = "red";
+            opt.forEach((optElement) => {
+              if (optElement.innerText === easyQues[index].answer) {
+                optElement.style.backgroundColor = "greenyellow";
+                new Audio("Audio/wrong.mp3").play();
+              }
+            });
+          }
+
+          answeredCorrectly = true;
+          opt.forEach((optElement) => {
+            optElement.removeEventListener("click", () => {});
+            optElement.style.cursor = "no-drop";
+            optElement.classList.add("clicked");
+            optElement.classList.remove("hover-effect");
+          });
         }
-        audio.play();
       });
+      ele.classList.add("hover-effect");
     });
   }
 
@@ -353,19 +440,25 @@ if (localStorage.userDifficulty === "hard") {
 
   const btn = document.querySelector("#btn");
   btn.addEventListener("click", () => {
+    selectedOption = null;
     currentQuestionIndex++;
     curr.innerText = currentQuestionIndex + 1;
+
+    // Reset all options
+    opt.forEach((ele) => {
+      ele.style.backgroundColor = "";
+      ele.style.pointerEvents = "auto";
+    });
+
     if (currentQuestionIndex == 9) {
       btn.innerText = "Submit";
       btn.style.backgroundColor = "greenyellow";
     }
-
     if (currentQuestionIndex < easyQues.length) {
       displayQuestion(currentQuestionIndex);
     } else {
       location.href = "result.html";
       curr.innerText = 10;
-
       displayQuestion(currentQuestionIndex);
     }
   });
