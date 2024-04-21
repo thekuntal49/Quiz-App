@@ -171,10 +171,13 @@ body {
 
 .img-list {
   display: flex;
- 
   align-items: center;
   overflow: scroll;
+  scrollbar-width: none;
 }
+
+.img-list::-webkit-scrollbar {
+  display: none;
 
 #para {
   position: absolute;
