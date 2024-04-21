@@ -1,3 +1,6 @@
+const audio = new Audio("Audio/login.mp3");
+audio.play();
+
 const image = document.querySelector("#image");
 const para = document.querySelector("p");
 image.src = localStorage.userAvatar;
