@@ -169,6 +169,13 @@ body {
   cursor: pointer;
 }
 
+.img-list {
+  display: flex;
+ 
+  align-items: center;
+  overflow: scroll;
+}
+
 #para {
   position: absolute;
   top: 270px;
@@ -220,7 +227,7 @@ body {
   align-items: center;
   border: none;
   margin: 15px;
-  font-size: 14px;
+  font-size: 11px;
   border-radius: 6px;
   background-color: white;
   color: rgb(66, 64, 64);
@@ -356,4 +363,5 @@ body {
 .opt.hover-effect:hover {
   background-color: greenyellow;
 }
+
 
