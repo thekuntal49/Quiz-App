@@ -178,7 +178,7 @@ body {
 
 .img-list::-webkit-scrollbar {
   display: none;
-
+}
 #para {
   position: absolute;
   top: 270px;
